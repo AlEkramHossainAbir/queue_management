@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="create_category_form_view" model="ir.ui.view">
+        <field name="name">Create Category</field>
+        <field name="model">queue.category</field>
+        <field name="arch" type="xml">
+            <form string="Create Category">
+                <sheet>
+                    <group>
+                        <field name="category"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="create_category_tree_view" model="ir.ui.view">
+        <field name="name">Create Category</field>
+        <field name="model">queue.category</field>
+        <field name="arch" type="xml">
+            <tree string="Create Category" editable="bottom">
+                <field name="category"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="create_category_action" model="ir.actions.act_window">
+        <field name="name">Create Category</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">queue.category</field>
+        <field name="view_mode">tree</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Add Text Here
+            </p>
+            <p>
+                More details about what a user can do with this object will be OK
+            </p>
+        </field>
+    </record>
+
+    <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+    <menuitem id="create_category" name="Create Category" sequence="102" parent="queue_management_root"
+              action="create_category_action"/>
+</odoo>

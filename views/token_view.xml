@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+    <record id="create_token_seq" model="ir.sequence">
+        <field name="name">Create Token Sequence</field>
+        <field name="code">queue.token.sequence</field>
+        <field name="prefix">Token </field>
+        <field name="padding">4</field>
+    </record>
+    <record id="create_token_kanban_view" model="ir.ui.view">
+        <field name="name">Create Token</field>
+        <field name="model">queue.token</field>
+        <field name="arch" type="xml">
+            <kanban create="false">
+                <field name="token_seq"/>
+                <field name="current_date"/>
+                <templates>
+                    <t t-name="kanban-box" style="height:100%;width:50px;">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hospital_patient_kanban">
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_tags_section"/>
+                                <ul>
+                                    <li>Token : <field name="token_seq"/></li>
+                                    <li>Date : <field name="current_date"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="create_token_tree_view" model="ir.ui.view">
+        <field name="name">Create Token</field>
+        <field name="model">queue.token</field>
+        <field name="arch" type="xml">
+            <tree string=" Create Token" editable="bottom">
+                <field name="token_seq"/>
+                <field name="current_date"/>
+                <field name="category"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="create_token_action" model="ir.actions.act_window">
+        <field name="name">Create Token</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">queue.token</field>
+        <field name="view_mode">tree,kanban</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Add Text Here
+            </p>
+            <p>
+                More details about what a user can do with this object will be OK
+            </p>
+        </field>
+    </record>
+
+    <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+    <menuitem id="queue_management_root" name="Queue Management" sequence="100"/>
+    <menuitem id="create_token" name="Create Token" sequence="101" parent="queue_management_root"
+              action="create_token_action"/>
+</odoo>
