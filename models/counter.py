@@ -6,7 +6,7 @@ class Counter(models.Model):
     # _rec_name = 'name'
     _description = 'Counter of a bank'
 
-    currently_assign = fields.Many2one('counter.manager', string="Assigned Officer")
+    currently_assign = fields.Many2one('res.users', string="Support Engineer", required=True)
     current_token = fields.Many2one('queue.token', string="Current Token")
     counter_num_seq = fields.Char(string="Counter Number", required=True,
                                   copy=False, readonly=True, index=True,

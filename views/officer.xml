@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="officer's_token_kanban_view" model="ir.ui.view">
+        <field name="name">Officer's Token</field>
+        <field name="model">queue.officer</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="fieldB"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click"
+                             style="background-color:rgba(140, 175, 247, 0.3);height:100px;width:50px;">
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_tags_section"/>
+                                <ul style="font-size:16px">
+                                    <li>
+                                        <field name="fieldB"/>
+                                    </li>
+                                    <li>
+                                        <field name="category"/>
+                                    </li>
+                                    <li>
+                                        <button name="solved_state" type="object" class="btn-primary"
+                                                style="height:100%;">Solved
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="officer's_token_form_view" model="ir.ui.view">
+        <field name="name">Officer's Token</field>
+        <field name="model">queue.officer</field>
+        <field name="arch" type="xml">
+            <form string="Tokun">
+                <sheet>
+                    <group>
+                        <field name="fieldB"/>
+                        <field name="category"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="officer's_token_tree_view" model="ir.ui.view">
+        <field name="name">Officer's Token</field>
+        <field name="model">queue.officer</field>
+        <field name="arch" type="xml">
+            <tree string="Toku" editable="bottom">
+                <field name="fieldB"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="officer's_token_action" model="ir.actions.act_window">
+        <field name="name">Officer's Token</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">queue.officer</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Add Text Here
+            </p>
+            <p>
+                More details about what a user can do with this object will be OK
+            </p>
+        </field>
+    </record>
+
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="officer's_token" name="Officer's Token" parent="queue_management_root"
+              action="officer's_token_action" sequence="106"/>
+</odoo>

@@ -29,9 +29,10 @@
         'views/views.xml',
         'views/templates.xml',
         'views/category.xml',
-        'views/counter_manager.xml',
         'views/counter.xml',
-        'views/report_generate.xml'
+        'views/report_generate.xml',
+        'views/officer.xml',
+
 
     ],
     # only loaded in demonstration mode

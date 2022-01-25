@@ -12,6 +12,11 @@ class QueueToken(models.Model):
                             copy=False, readonly=True, index=True,
                             default=lambda self: _('New'))
 
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('solved', 'Solved'),
+    ], string='Status', readonly=True, default='draft')
+
     @api.model
     def create(self, vals_list):
         if vals_list.get('token_seq', _('New')) == _('New'):
@@ -24,3 +29,6 @@ class QueueToken(models.Model):
     #
 
     category = fields.Many2one('queue.category', string="Category")
+
+    def solved_state(self):
+        self.state = 'solved'

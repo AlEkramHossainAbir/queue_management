@@ -5,32 +5,99 @@
     <record id="create_token_seq" model="ir.sequence">
         <field name="name">Create Token Sequence</field>
         <field name="code">queue.token.sequence</field>
-        <field name="prefix">Token </field>
+        <field name="prefix">Token</field>
         <field name="padding">4</field>
     </record>
-    <record id="create_token_kanban_view" model="ir.ui.view">
-        <field name="name">Create Token</field>
-        <field name="model">queue.token</field>
-        <field name="arch" type="xml">
-            <kanban create="false">
-                <field name="token_seq"/>
-                <field name="current_date"/>
-                <templates>
-                    <t t-name="kanban-box" style="height:100%;width:50px;">
-                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hospital_patient_kanban">
-                            <div class="oe_kanban_details">
-                                <div class="o_kanban_tags_section"/>
-                                <ul>
-                                    <li>Token : <field name="token_seq"/></li>
-                                    <li>Date : <field name="current_date"/></li>
-                                </ul>
+        <record id="create_token_kanban_view" model="ir.ui.view">
+            <field name="name">Create Token</field>
+            <field name="model">queue.token</field>
+            <field name="arch" type="xml">
+                <kanban create="false">
+                    <field name="token_seq"/>
+                    <field name="current_date"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click" style="background-color:rgba(140, 175, 247, 0.3);height:100%;width:50px;">
+                                <div class="oe_kanban_details">
+                                    <div class="o_kanban_tags_section"/>
+                                    <ul style="font-size:16px">
+                                        <li>Token :
+                                            <field name="token_seq"/>
+                                        </li>
+                                        <li>Category :
+                                            <field name="category"/>
+                                        </li>
+                                        <li>Date :
+                                            <field name="current_date"/>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                    </t>
-                </templates>
-            </kanban>
-        </field>
-    </record>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+<!--    <record id="token_kanban" model="ir.ui.view">-->
+<!--        <field name="name">Create Token</field>-->
+<!--        <field name="model">queue.token</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <kanban>-->
+<!--                <field name="token_seq"/>-->
+<!--                <field name="current_date"/>-->
+<!--                <templates>-->
+<!--                    <t t-name="kanban-box">-->
+<!--                        <div class="oe_kanban_global_click">-->
+<!--                            <div class="oe_kanban_details">-->
+<!--                                <div class="row">-->
+<!--                                    <div class="col-md-8">-->
+<!--                                        <div class="card" style="background-color:#C996CC">-->
+<!--                                            <center>-->
+<!--                                                <div class="card-header">-->
+<!--                                                    <ul>-->
+<!--                                                        <li style="font-size:23px">Token :-->
+<!--                                                            <field name="token_seq"/>-->
+<!--                                                        </li>-->
+<!--                                                    </ul>-->
+<!--                                                </div>-->
+<!--                                                <ul class="list-group list-group-flush mt-5 mb-5 color:green">-->
+<!--                                                    <li style="font-size:16px">Date :-->
+<!--                                                        <field name="current_date"/>-->
+<!--                                                    </li>-->
+<!--                                                </ul>-->
+<!--                                            </center>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+
+<!--                                    <div class="col-md-4 ">-->
+<!--                                        <div class="card" style="background-color:#BAABDA">-->
+<!--                                            <center>-->
+<!--                                                <div class="card-header">-->
+<!--                                                    <ul>-->
+<!--                                                        <li style="font-size:20px">Token :-->
+<!--                                                            <field name="token_seq"/>-->
+<!--                                                        </li>-->
+<!--                                                    </ul>-->
+<!--                                                </div>-->
+<!--                                                <ul class="list-group list-group-flush mt-5 mb-5 color:green">-->
+<!--                                                    <li style="font-size:16px">Date :-->
+<!--                                                        <field name="current_date"/>-->
+<!--                                                    </li>-->
+<!--                                                </ul>-->
+<!--                                            </center>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </t>-->
+<!--                </templates>-->
+<!--            </kanban>-->
+<!--        </field>-->
+<!--    </record>-->
+
 
     <record id="create_token_tree_view" model="ir.ui.view">
         <field name="name">Create Token</field>
@@ -40,6 +107,8 @@
                 <field name="token_seq"/>
                 <field name="current_date"/>
                 <field name="category"/>
+                <button name="solved_state" type="object" string="Solved"/>
+                <field name="state"/>
             </tree>
         </field>
     </record>
