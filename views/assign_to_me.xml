@@ -1,29 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
-
-    <record id="counter_seq" model="ir.sequence">
-        <field name="name">Create Token Sequence</field>
-        <field name="code">queue.counter.sequence</field>
-        <field name="prefix">Counter </field>
-        <field name="padding">2</field>
-    </record>
-
-    <record id="counter_tree_view" model="ir.ui.view">
+    <record id="assign_counter_tree_view" model="ir.ui.view">
         <field name="name">Create counter</field>
-        <field name="model">queue.counter</field>
+        <field name="model">queue.officer_assign</field>
         <field name="arch" type="xml">
             <tree string=" Create Token" editable="bottom">
-                <field name="counter_num_seq"/>
+                <field name="counter_num"/>
+                <field name="currently_assign"/>
+                <field name="current_token"/>
             </tree>
         </field>
     </record>
 
 
-    <record id="counter_action" model="ir.actions.act_window">
+    <record id="assign_counter_action" model="ir.actions.act_window">
         <field name="name">Create counter</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">queue.counter</field>
+        <field name="res_model">queue.officer_assign</field>
         <field name="view_mode">tree</field>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
@@ -36,6 +30,6 @@
     </record>
 
     <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
-    <menuitem id="create_counter" name="Create Counter" sequence="105" parent="queue_management_root"
-              action="counter_action"/>
+    <menuitem id="assign_to_me" name="Assign Counter" sequence="107" parent="queue_management_root"
+              action="assign_counter_action"/>
 </odoo>

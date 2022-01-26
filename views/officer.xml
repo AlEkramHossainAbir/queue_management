@@ -5,19 +5,23 @@
         <field name="model">queue.officer</field>
         <field name="arch" type="xml">
             <kanban>
-                <field name="fieldB"/>
+                <field name="token"/>
+                <field name="category"/>
+                <field name="current_time"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click"
-                             style="background-color:rgba(140, 175, 247, 0.3);height:100px;width:50px;">
+                             style="background-color:rgba(140, 175, 247, 0.3);height:100%;width:50px;">
                             <div class="oe_kanban_details">
                                 <div class="o_kanban_tags_section"/>
                                 <ul style="font-size:16px">
                                     <li>
-                                        <field name="fieldB"/>
+                                        <field name="token"/>
                                     </li>
                                     <li>
                                         <field name="category"/>
+                                    </li><li>
+                                        <field name="current_time"/>
                                     </li>
                                     <li>
                                         <button name="solved_state" type="object" class="btn-primary"
@@ -41,8 +45,9 @@
             <form string="Tokun">
                 <sheet>
                     <group>
-                        <field name="fieldB"/>
+                        <field name="token"/>
                         <field name="category"/>
+                        <field name="current_time"/>
                     </group>
                 </sheet>
             </form>
@@ -54,7 +59,10 @@
         <field name="model">queue.officer</field>
         <field name="arch" type="xml">
             <tree string="Toku" editable="bottom">
-                <field name="fieldB"/>
+                <field name="token"/>
+                <field name="category"/>
+                <field name="current_time"/>
+                <field name="solved_token"/>
             </tree>
         </field>
     </record>

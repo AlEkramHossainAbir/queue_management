@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_queue_management_queue_management,queue_management.queue_management,model_queue_management_queue_management,base.group_user,1,1,1,1
 access_queue_token,queue.token,model_queue_token,base.group_user,1,1,1,1
+access_queue_officer,queue.officer,model_queue_officer,base.group_user,1,1,1,1
+access_queue_officer_assign,queue.officer_assign,model_queue_officer_assign,base.group_user,1,1,0,0
