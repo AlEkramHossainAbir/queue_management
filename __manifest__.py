@@ -24,17 +24,13 @@
 
     # always loaded
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
         'views/token_view.xml',
         'views/views.xml',
         'views/templates.xml',
         'views/category.xml',
         'views/counter.xml',
-        'views/report_generate.xml',
-        'views/officer.xml',
-        'views/assign_to_me.xml',
-        'security/security.xml'
-
 
     ],
     # only loaded in demonstration mode

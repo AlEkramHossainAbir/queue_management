@@ -43,5 +43,5 @@
 
     <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
     <menuitem id="create_category" name="Create Category" sequence="102" parent="queue_management_root"
-              action="create_category_action"/>
+              action="create_category_action" groups="queue_management.group_admin"/>
 </odoo>

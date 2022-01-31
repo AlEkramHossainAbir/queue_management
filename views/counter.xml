@@ -1,11 +1,93 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
+    <record id="counter_kanban_view" model="ir.ui.view">
+        <field name="name">Create counter</field>
+        <field name="model">queue.counter</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="counter_num_seq"/>
+                <field name="assign_state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click"
+                             style="background-color:#f2f7f7;height:100%;width:250px; font-size:18px;">
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_tags_section"
+                                />
+                                <div class="header_view" style="height:100%;width:100%;border:1px solid #0c2e2c;">
+                                    <field name="counter_num_seq"/>
+                                    <div style="float:right;border:1px solid;background-color:lightblue">
+                                        <field name="assign_state"/>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="inside_view" style="height:100%;width:100%;border:1px solid teal;padding:5px">
+                                    <ul style="font-size:16px">
+
+                                        <li>
+                                            Name:
+                                            <field name="currently_assign"/>
+                                        </li>
+                                        <li>
+                                            Processing Token:
+                                            <field name="current_token"/>
+                                        </li>
+                                        <li>
+                                            Category:
+                                            <field name="category"/>
+                                        </li>
+
+                                        <li>
+                                            <div style="display:flex">
+                                                <div>
+                                                    <button name="assign_counter" type="object"
+                                                            attrs="{'invisible': [('assign_state','!=','offline')]}"
+                                                    style="margin-left:70px;margin-right:-35px" groups="queue_management.group_bank_officer">
+                                                        Assign
+                                                        To ME
+                                                    </button>
+                                                    <button name="free_counter" type="object" groups="queue_management.group_bank_officer"
+                                                            attrs="{'invisible': ['|',('assign_state','=','offline'),('current_token','!=',False)]}">Free
+                                                        Counter
+                                                    </button>
+                                                </div>
+                                                <div style="margin-left:75px;">
+                                                    <button name="close_token" type="object" groups="queue_management.group_bank_officer"
+                                                            attrs="{'invisible': [('current_token','=',False)]}"
+                                                    >Close
+                                                    </button>
+
+                                                </div>
+                                                <div style="margin-left:25px;">
+                                                    <button name="solved_state" type="object" groups="queue_management.group_bank_officer"
+                                                            attrs="{'invisible': ['|',('assign_state','!=','online'),('current_token','!=',False)]}"
+                                                    >Next
+                                                    </button>
+
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
 
     <record id="counter_seq" model="ir.sequence">
         <field name="name">Create Token Sequence</field>
         <field name="code">queue.counter.sequence</field>
-        <field name="prefix">Counter </field>
+        <field name="prefix">Counter</field>
         <field name="padding">2</field>
     </record>
 
@@ -24,7 +106,7 @@
         <field name="name">Create counter</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">queue.counter</field>
-        <field name="view_mode">tree</field>
+        <field name="view_mode">kanban,tree</field>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
                 Add Text Here
