@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
 
+    <record id="create_category_kanban_view" model="ir.ui.view">
+        <field name="name">Create Category</field>
+        <field name="model">queue.category</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="category"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click card text-center" style="height:100px;">
+                            <button name="create_token" type="object" class="btn btn-info" style="height:100%;width:100%;font-size:18px;"><field name="category"/></button>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
     <record id="create_category_form_view" model="ir.ui.view">
         <field name="name">Create Category</field>
         <field name="model">queue.category</field>
@@ -30,7 +47,7 @@
         <field name="name">Create Category</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">queue.category</field>
-        <field name="view_mode">tree</field>
+        <field name="view_mode">kanban,tree,form</field>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
                 Add Text Here
@@ -43,5 +60,5 @@
 
     <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
     <menuitem id="create_category" name="Create Category" sequence="102" parent="queue_management_root"
-              action="create_category_action" groups="queue_management.group_admin"/>
+              action="create_category_action"/>
 </odoo>

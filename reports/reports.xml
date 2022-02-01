@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- QWeb Reports -->
+    <!-- NAME & FILE_NAME should be the same -->
+    <report
+            id="report_queue_token"
+            model="queue.token"
+            report_type="qweb-pdf"
+            string="Token Number"
+            name="queue_management.report_queue_generate_view"
+            file="queue_management.report_queue_generate"
+    />
+
+    <template id="report_queue_generate_view">
+        <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <h1><t t-esc="data['token_seq']"/></h1>
+                    <br></br>
+                    <h2><t t-esc="data['category']"/></h2>
+                    <br></br>
+                    <h2><t t-esc="data['date']"/></h2>
+                </t>
+        </t>
+    </template>
+</odoo>

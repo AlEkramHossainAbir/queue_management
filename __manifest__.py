@@ -32,6 +32,8 @@
         'views/category.xml',
         'views/counter.xml',
 
+        'reports/reports.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [

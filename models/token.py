@@ -25,10 +25,17 @@ class QueueToken(models.Model):
         result = super(QueueToken, self).create(vals_list)
         return result
 
-    # contact_no = fields.Char(string="Contact No")
-    #
-
     category = fields.Many2one('queue.category', string="Category")
 
     def solved_state(self):
         self.state = 'solved'
+
+    def print_token_report(self, t=None, cat=None):
+        data = {
+            'model': self._name,
+            'ids': self.ids,
+            'token_seq': t.token_seq,
+            'category': cat,
+            'date': t.current_date
+        }
+        return self.env.ref('queue_management.report_queue_token').report_action(self, data=data)

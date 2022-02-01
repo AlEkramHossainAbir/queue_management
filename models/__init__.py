@@ -4,4 +4,6 @@ from . import models
 from . import token
 from . import category
 from . import counter
+from . import token_report
+
 
